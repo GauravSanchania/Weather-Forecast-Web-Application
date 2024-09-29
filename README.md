@@ -5,3 +5,5 @@ In this project I have used these technologies:
 --> CSS
 --> Tailwind CSS
 --> JavaScipt
+
+Author : Gaurav Sanchania.
