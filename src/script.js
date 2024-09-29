@@ -2,14 +2,18 @@ const citySearchInput = document.getElementById('city-search');
 const searchButton = document.getElementById('search-button');
 const apiKey = 'd6d8982cca5247a882a132815242909'; // Weather API key
 const weatherDisplay = document.getElementById('weather-display');
+const currentLocationButton = document.getElementById('current-location-button');
 
 searchButton.addEventListener("click", () => {
-  const cityName = citySearchInput.value;
-  if (cityName) {
-    fetchWeatherData(cityName);
-  } else {
-    alert('Please enter a city name.');
-  }
+    currentLocationButton.disabled = true;
+    currentLocationButton.style.backgroundColor = 'grey';
+    
+    const cityName = citySearchInput.value;
+    if (cityName) {
+      fetchWeatherData(cityName);
+    } else {
+      alert('Please enter a city name.');
+    }
 });
 
 function fetchWeatherData(cityName) {
@@ -18,7 +22,7 @@ function fetchWeatherData(cityName) {
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         displayWeatherData(data);
       })
       .catch(error => {
