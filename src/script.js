@@ -12,6 +12,7 @@ function updateDropdownMenu() {
     recentlySearchedCities.forEach((city) => {
     const dropdownItem = document.createElement('li');
     dropdownItem.textContent = city;
+    // dropdownItem.classList.add('text-gray-700', 'hover:bg-gray-200', 'py-2', 'px-4', 'cursor-pointer');
     dropdownItem.addEventListener('click', () => {
         citySearchInput.value = city;
         fetchWeatherData(city);
