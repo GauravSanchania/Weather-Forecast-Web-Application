@@ -12,11 +12,11 @@ function updateDropdownMenu() {
     recentlySearchedCities.forEach((city) => {
     const dropdownItem = document.createElement('li');
     dropdownItem.textContent = city;
-    // dropdownItem.classList.add('text-gray-700', 'hover:bg-gray-200', 'py-2', 'px-4', 'cursor-pointer');
+    dropdownItem.classList.add('text-gray-700', 'hover:bg-gray-200', 'py-2', 'px-4', 'cursor-pointer');
     dropdownItem.addEventListener('click', () => {
         citySearchInput.value = city;
         fetchWeatherData(city);
-        dropdownMenu.classList.add('hidden');
+        // dropdownMenu.classList.add('hidden');
     });
     dropdownMenu.appendChild(dropdownItem);
   });
@@ -34,7 +34,7 @@ searchButton.addEventListener("click", () => {
         return;
       }
       fetchWeatherData(cityName);
-      dropdownMenu.classList.add('hidden');
+      // dropdownMenu.classList.add('hidden');
     } else {
       alert('Please enter a city name.');
     }
@@ -48,6 +48,7 @@ function fetchWeatherData(cityName) {
       .then(data => {
         // console.log(data);
         displayWeatherData(data);
+        updateDropdownMenu();
       })
       .catch(error => {
         console.error('Error fetching weather data:', error);
@@ -58,19 +59,22 @@ function fetchWeatherData(cityName) {
         recentlySearchedCities.unshift(cityName);
         localStorage.setItem('recentlySearchedCities', JSON.stringify(recentlySearchedCities));
       }
-      updateDropdownMenu();
 }
-
+    
 function displayWeatherData(data) {
-    const weatherInfo = `
+      const weatherInfo = `
       <h2>${data.location.name}, ${data.location.country}</h2>
       <p>Temperature: ${data.current.temp_c}°C</p>
       <p>Condition: ${data.current.condition.text}</p>
       <img src="${data.current.condition.icon}"
       alt="${data.current.condition.text}">
       `;
-    weatherDisplay.innerHTML = weatherInfo;
+      
+    setTimeout(() => {
+      weatherDisplay.classList.remove('hidden');
+      document.getElementById('weather-display').innerHTML = weatherInfo;
+    }, 500);
 }
 
 updateDropdownMenu();
-localStorage.clear();
+// localStorage.clear();

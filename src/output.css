@@ -718,6 +718,7 @@ video {
 .hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+  color: white;
 }
 
 .hover\:bg-gray-200:hover {
@@ -745,4 +746,43 @@ video {
   .md\:flex-row {
     flex-direction: row;
   }
+}
+
+.bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity)) /* #cbd5e1 */;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) /* #ffffff */;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weather-tile {
+  background-color: #fff; 
+  padding: 2rem; 
+}
+
+.weather-tile h2 {
+  font-size: 1.5rem; 
+  margin-bottom: 1rem; 
+}
+
+.weather-tile p {
+  margin-bottom: 0.5rem; 
+}
+
+.weather-tile img {
+  width: auto; 
+  height: auto; 
+  margin-bottom: 1rem; 
+}
+
+.mt-2 {
+  margin-top: 0.5rem /* 8px */;
 }
