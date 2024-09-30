@@ -22,8 +22,8 @@ function updateDropdownMenu() {
 }
 
 searchButton.addEventListener("click", () => {
-    currentLocationButton.disabled = true;
-    currentLocationButton.style.backgroundColor = 'grey';
+    // currentLocationButton.disabled = true;
+    // currentLocationButton.style.backgroundColor = 'grey';
 
     const cityName = citySearchInput.value;
     const cityNameRegex = /^[a-zA-Z\s]+$/;
