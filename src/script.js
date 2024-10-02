@@ -68,6 +68,7 @@ function displayWeatherData(data) {
       <p>Condition: ${data.current.condition.text}</p>
       <img src="${data.current.condition.icon}"
       alt="${data.current.condition.text}">
+      <p>Humidity: ${data.current.humidity}%</p>
       `;
       
     setTimeout(() => {
