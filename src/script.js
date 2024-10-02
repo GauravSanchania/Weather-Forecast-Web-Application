@@ -3,6 +3,7 @@ const searchButton = document.getElementById('search-button');
 const apiKey = 'd6d8982cca5247a882a132815242909'; // Weather API key
 const weatherDisplay = document.getElementById('weather-display');
 const currentLocationButton = document.getElementById('current-location-button');
+const locationDisplay = document.getElementById('location-display');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
 function updateDropdownMenu() {
@@ -38,6 +39,32 @@ searchButton.addEventListener("click", () => {
     } else {
       alert('Please enter a city name.');
     }
+});
+
+currentLocationButton.addEventListener('click', () => {
+  navigator.geolocation.getCurrentPosition(
+      (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          const apiUrl = `https://ipinfo.io/json`;
+
+          fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                // console.log(data.city);
+                // console.log(data.region);
+                // console.log(data.country);
+                fetchWeatherData(data.city);
+              })
+              .catch(error => {
+                  console.error('Error fetching location:', error);
+              });
+      },
+      (error) => {
+          console.error('Error getting current location:', error);
+      }
+  );
 });
 
 function fetchWeatherData(cityName) {
